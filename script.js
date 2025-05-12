@@ -1,5 +1,5 @@
 const typingElement = document.getElementById("typing");
-const textArray = ["Abhishek", "a Designer", "a Developer", "a Creative Thinker"];
+const textArray = ["Abhishek", "a Designer", "a Developer", "an AI Explorer","a Creative Thinker"];
 let textIndex = 0;
 let charIndex = 0;
 
@@ -60,52 +60,248 @@ document.addEventListener('DOMContentLoaded', () => {
 
 const canvas = document.getElementById('bg-animation');
 const ctx = canvas.getContext('2d');
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
+
+function setCanvasSize() {
+  const displayWidth = window.innerWidth;
+  const displayHeight = window.innerHeight;
+  
+  canvas.style.width = displayWidth + 'px';
+  canvas.style.height = displayHeight + 'px';
+  
+  const pixelRatio = window.devicePixelRatio || 1;
+  canvas.width = displayWidth * pixelRatio;
+  canvas.height = displayHeight * pixelRatio;
+  
+  ctx.scale(pixelRatio, pixelRatio);
+  
+  initParticles();
+}
 
 let particles = [];
-for (let i = 0; i < 100; i++) {
-  particles.push({
-    x: Math.random() * canvas.width,
-    y: Math.random() * canvas.height,
-    r: Math.random() * 2 + 1,
-    dx: (Math.random() - 0.5) * 0.5,
-    dy: (Math.random() - 0.5) * 0.5
-  });
-}
+const PARTICLE_COUNT = 320;
 
-function resizeCanvas() {
-    // Always fill the entire viewport, regardless of zoom
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
+function initParticles() {
+  particles = [];
+  for (let i = 0; i < PARTICLE_COUNT; i++) {
+    particles.push({
+      x: Math.random() * window.innerWidth,
+      y: Math.random() * window.innerHeight,
+      r: Math.random() * 3 + 1,
+      dx: (Math.random() - 0.5) * 1,
+      dy: (Math.random() - 0.5) *1,
+      opacity: Math.random() * 0.5 + 0.3
+    });
+  }
 }
-resizeCanvas();
 
 function animate() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    for (let p of particles) {
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 20);
-        ctx.fillStyle = "rgb(143, 124, 90)";
-        ctx.fill();
-        p.x += p.dx;
-        p.y += p.dy;
-        if (p.x < 0 || p.x > canvas.width) p.dx *= -1;
-        if (p.y < 0 || p.y > canvas.height) p.dy *= -1;
-    }
-    // Ensure canvas always fills the page, even after zooming
-    if (canvas.width !== window.innerWidth || canvas.height !== window.innerHeight) {
-        resizeCanvas();
-    }
-    requestAnimationFrame(animate);
+  ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
+  
+  for (let p of particles) {
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+    
+    const isDark = document.body.classList.contains('dark-mode');
+    const color = isDark ? `rgba(255, 255, 255, ${p.opacity * 0.3})` : `rgba(43, 124, 90, ${p.opacity})`;
+    ctx.fillStyle = color;
+    ctx.fill();
+    
+    p.x += p.dx;
+    p.y += p.dy;
+    
+    const buffer = 5;
+    if (p.x < -buffer || p.x > window.innerWidth + buffer) p.dx *= -1;
+    if (p.y < -buffer || p.y > window.innerHeight + buffer) p.dy *= -1;
+  }
+  
+  requestAnimationFrame(animate);
 }
+
+setCanvasSize();
 animate();
 
-window.addEventListener("resize", () => {
-    resizeCanvas();
+let resizeTimer;
+window.addEventListener('resize', () => {
+  clearTimeout(resizeTimer);
+  resizeTimer = setTimeout(() => {
+    setCanvasSize();
+  }, 250);
 });
 
-window.addEventListener("resize", () => {
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
+window.addEventListener('wheel', (e) => {
+  if (e.ctrlKey) {
+    setTimeout(setCanvasSize, 100);
+  }
+});
+
+window.matchMedia('(resolution)').addEventListener('change', setCanvasSize);
+
+
+document.addEventListener('DOMContentLoaded', function() {
+  const aboutMeCard = document.getElementById('about-me');
+  const readMoreBtn = document.querySelector('.read-more-btn');
+  const modalOverlay = document.getElementById('modal-overlay');
+  const closeModalBtn = document.querySelector('.close-modal');
+  
+  // Function to open modal
+  function openModal() {
+    modalOverlay.classList.add('active');
+    // Prevent body scrolling when modal is open
+    document.body.style.overflow = 'hidden';
+  }
+  
+  // Function to close modal
+  function closeModal() {
+    modalOverlay.classList.remove('active');
+    // Restore body scrolling
+    document.body.style.overflow = '';
+  }
+  
+  // Open modal when clicking the card or the read more button
+  aboutMeCard.addEventListener('click', function(e) {
+    // Only open if they didn't click the button (button has its own listener)
+    if (!e.target.classList.contains('read-more-btn')) {
+      openModal();
+    }
+  });
+  
+  readMoreBtn.addEventListener('click', function(e) {
+    e.stopPropagation(); // Prevent triggering the card's click event
+    openModal();
+  });
+  
+  // Close modal when clicking the close button
+  closeModalBtn.addEventListener('click', closeModal);
+  
+  // Close modal when clicking outside the modal content
+  modalOverlay.addEventListener('click', function(e) {
+    if (e.target === modalOverlay) {
+      closeModal();
+    }
+  });
+  
+  // Close modal with ESC key
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && modalOverlay.classList.contains('active')) {
+      closeModal();
+    }
+  });
+});
+
+
+document.addEventListener('DOMContentLoaded', function() {
+  // Initialize intersection observer
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        // Apply animation when tile becomes visible
+        animateTile(entry.target);
+        // Stop observing after animation is applied
+        observer.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: 0.15,
+    rootMargin: '0px 0px -50px 0px'
+  });
+  
+  // Staggered animation for tiles
+  const tiles = document.querySelectorAll('.card');
+  tiles.forEach((tile, index) => {
+    // Set initial state
+    tile.style.opacity = '0';
+    
+    // Start observing tiles
+    observer.observe(tile);
+  });
+  
+  // Function to apply different animations to different tiles
+  function animateTile(tile) {
+    // Array of animation names
+    const animations = ['fadeInUp', 'fadeInLeft', 'fadeInRight', 'zoomIn', 'flipIn'];
+    
+    // Choose animation based on tile type
+    let animation = '';
+    let duration = 0.6;
+    let delay = 0;
+    
+    if (tile.classList.contains('hero')) {
+      animation = 'zoomIn';
+      delay = 0;
+    } else if (tile.classList.contains('portrait-container')) {
+      animation = 'fadeInRight';
+      delay = 0.2;
+    } else if (tile.classList.contains('project')) {
+      animation = 'fadeInUp';
+      delay = 0.4;
+    } else if (tile.classList.contains('skills')) {
+      animation = 'fadeInLeft';
+      delay = 0.5;
+    } else if (tile.classList.contains('contact')) {
+      animation = 'fadeInRight';
+      delay = 0.6;
+    } else if (tile.classList.contains('about-me')) {
+      animation = 'flipIn';
+      delay = 0.3;
+    } else {
+      // Random animation for any other tiles
+      animation = animations[Math.floor(Math.random() * animations.length)];
+      delay = Math.random() * 0.5;
+    }
+    
+    // Apply animation
+    tile.style.animation = `${animation} ${duration}s ease-out forwards`;
+    tile.style.animationDelay = `${delay}s`;
+  }
+  
+  // Additional code to handle resize events
+  let resizeTimer;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => {
+      // Adjust layout if needed after resize
+      const container = document.querySelector('main.container');
+      const tiles = container.querySelectorAll('.card');
+      
+      // Apply responsive adjustments based on container width
+      if (container.offsetWidth < 768) {
+        // Mobile layout adjustments
+        tiles.forEach(tile => {
+          if (tile.classList.contains('hero') || tile.classList.contains('project')) {
+            tile.style.gridColumn = 'span 1';
+          }
+        });
+      } else {
+        // Reset to default layout
+        tiles.forEach(tile => {
+          if (tile.classList.contains('hero') || tile.classList.contains('project')) {
+            tile.style.gridColumn = 'span 2';
+          }
+        });
+      }
+    }, 250);
+  });
+  
+  // Handle content-based sizing
+  // This uses a MutationObserver to detect content changes
+  const contentObserver = new MutationObserver((mutations) => {
+    mutations.forEach(mutation => {
+      if (mutation.type === 'childList' || mutation.type === 'characterData') {
+        const tile = mutation.target.closest('.card');
+        if (tile) {
+          // Let the tile grow with content (up to max-height)
+          tile.style.height = 'auto';
+        }
+      }
+    });
+  });
+  
+  // Observe content changes in all tiles
+  document.querySelectorAll('.card').forEach(tile => {
+    contentObserver.observe(tile, { 
+      childList: true, 
+      subtree: true,
+      characterData: true 
+    });
+  });
 });

@@ -1,125 +1,138 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Abhishek's Portfolio</title>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;500;700&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="styles.css" />
-  </head>
-  <body>
-    <canvas id="bg-animation"></canvas>
-    <header class="nav">
-      <h2>ABHISHEK</h2>
-      <nav>
-        <ul>
-          <li><a href="#about">About</a></li>
-          <li><a href="#projects">Projects</a></li>
-          <li><a href="#skills">Skills</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </nav>
-      <button id="darkToggle" title="Toggle Dark Mode">
-        <span id="toggleIcon">🌙</span>
-      </button>
-    </header>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Abhishek's Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <canvas id="bg-animation"></canvas>
+  <header class="nav">
+    <h2>ABHISHEK</h2>
+    <nav>
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+    <button id="darkToggle" title="Toggle Dark Mode"><span id="toggleIcon">🌙</span></button> 
+  </header>
 
-    <main class="container">
-      <section class="card hero" id="about">
-        <div class="hero-grid">
-          <div class="hero-intro tile">
-            <h1>
-              Artist Redefining<br />
-              Architecture with<br />
-              <span class="highlight">AI-Driven Design</span>
-            </h1>
-          </div>
-          <div class="hero-image tile">
-            <img src="your-photo.jpg" alt="Abhishek" />
-          </div>
-          <div class="hero-bio tile">
-            <p>
-              Abhishek is an innovative AI artist, renowned for blending
-              cutting-edge technology with creative expression. Based in LA, he
-              crafts unique digital art experiences accessible globally.
-            </p>
-          </div>
+  <main class="container">
+    <section class="card hero" id="about">
+      <div class="flower-icon">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="flower">
+          <circle cx="50" cy="50" r="7" class="flower-center" />
+          <g class="petals">
+            <path d="M50 20 Q40 35, 30 30 Q20 40, 50 50 Z" class="petal" />
+            <path d="M80 50 Q60 40, 70 30 Q60 20, 50 50 Z" class="petal" />
+            <path d="M50 80 Q40 60, 30 70 Q20 60, 50 50 Z" class="petal" />
+            <path d="M20 50 Q40 40, 30 30 Q40 20, 50 50 Z" class="petal" />
+            <path d="M50 20 Q60 35, 70 30 Q80 40, 50 50 Z" class="petal" />
+            <path d="M50 80 Q60 60, 70 70 Q80 60, 50 50 Z" class="petal" />
+          </g>
+        </svg>
+      </div>
+      <h1>Hi, I'm <span id="typing"></span></h1>
+      <p>Turning ideas into pixels, code into magic, and creativity into experiences.</p>
+    </section>
+  
+    <div class="card portrait-container">
+      <img src="aa.jpg" alt="Portrait of Abhishek">
+    </div>
+  
+    <section class="card about-me" id="about-me">
+      <h2>About Me</h2>
+      <p>Creative designer and developer passionate about blending technology with art to craft meaningful digital experiences.</p>
+      <button class="read-more-btn">Read More</button>
+    </section>
 
-      </section>
-
-      <section class="card project" id="projects">
-        <h2>Projects</h2>
-        <div class="project-grid">
-          <div class="project-item">
-            <img src="project1.jpg" alt="Project 1" />
+    <section class="card project" id="projects">
+      <h2>Projects</h2>
+      <div class="project-grid">
+        <div class="project-item">
+          <div class="project-image">
+            <img src="project1.jpg" alt="Project 1">
+          </div>
+          <div class="project-details">
             <h3>Project One</h3>
             <p>Brief description of Project One.</p>
           </div>
-          <div class="project-item">
-            <img src="project2.jpg" alt="Project 2" />
+        </div>
+        <div class="project-item">
+          <div class="project-image">
+            <img src="project2.jpg" alt="Project 2">
+          </div>
+          <div class="project-details">
             <h3>Project Two</h3>
             <p>Brief description of Project Two.</p>
           </div>
         </div>
-      </section>
+      </div>
+    </section>
+  
+    <section class="card skills" id="skills">
+      <h2>Skills</h2>
+      <ul>
+        <li>Web designing</li>
+        <li>Video Production</li>
+        <li>Graphic designing</li>
+        <li>Web development</li>
+        <li>AI tools</li>
+        <li>Creative thinking</li>
+      </ul>
+    </section>
+  
+    <section class="card contact" id="contact">
+      <h2>Contact</h2>
+      <p>Interested in collaborating? Let's connect!</p>
+      <a href="mailto:abhishek@example.com">abhishek@example.com</a><br>
+      <a href="https://wa.me/919999999999" target="_blank">
+        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/whatsapp.svg" alt="WhatsApp" style="width:20px;height:20px;margin-right:6px;vertical-align:middle;">
+        WhatsApp
+      </a><br>
+      <a href="tel:+919999999999">+91 99999 99999</a>
+    </section>
+  </main>
 
-      <section class="card skills" id="skills">
-        <h2>Skills</h2>
-        <ul>
-          <li>Web designing</li>
-          <li>Video Production</li>
-          <li>Graphic designing</li>
-          <li>Web development</li>
-          <li>AI tools</li>
-          <li>Creative thinking</li>
-        </ul>
-      </section>
+  <footer class="socials">
+    <a href="https://instagram.com/yourprofile" target="_blank" rel="noopener noreferrer">Instagram</a>
+    <a href="https://twitter.com/yourprofile" target="_blank" rel="noopener noreferrer">Twitter</a>
+    <a href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+  </footer>
 
-      <section class="card contact" id="contact">
-        <h2>Contact</h2>
-        <p>Interested in collaborating? Let's connect!</p>
-        <a href="mailto:abhishek@example.com">abhishek@example.com</a><br />
-        <a href="https://wa.me/919999999999" target="_blank">
-          <img
-            src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/whatsapp.svg"
-            alt="WhatsApp"
-            style="
-              width: 20px;
-              height: 20px;
-              margin-right: 6px;
-              vertical-align: middle;
-            "
-          />
-          WhatsApp </a
-        ><br />
-        <a href="tel:+919999999999">+91 99999 99999</a>
-      </section>
-    </main>
+  <script src="script.js"></script>
 
-    <footer class="socials">
-      <a
-        href="https://instagram.com/yourprofile"
-        target="_blank"
-        rel="noopener noreferrer"
-        >Instagram</a
-      >
-      <a
-        href="https://twitter.com/yourprofile"
-        target="_blank"
-        rel="noopener noreferrer"
-        >Twitter</a
-      >
-      <a
-        href="https://linkedin.com/in/yourprofile"
-        target="_blank"
-        rel="noopener noreferrer"
-        >LinkedIn</a
-      >
-    </footer>
+  <div id="modal-overlay" class="modal-overlay">
+    <div class="modal">
+      <div class="modal-header">
+        <h2>About Me</h2>
+        <button class="close-modal">&times;</button>
+      </div>
+      <div class="modal-content">
+        <p>👋 Hey there! I'm <strong>Abhishek</strong> — a creatively-wired designer, developer, and visual artist who blends code, aesthetics, and strategy to build powerful digital experiences.</p>
+        
+        <p>✨ From crafting seamless UI/UX for web platforms to elevating brands through bold visuals, motion graphics, and custom design — I thrive where creativity meets functionality. I don't just build things. I create experiences that connect, inspire, and leave an impact.</p>
+        
+        <p>🎨 With a sharp eye for detail and a love for visual storytelling, I specialize in responsive web design, frontend development, brand identity, and AI-powered content creation. Whether it's a portfolio, a product site, or a campaign reel — every pixel I place has a purpose.</p>
+        
+        <p>💻 When I’m not designing or coding, you’ll find me exploring emerging tech, experimenting with digital art, or vibing to late-night playlists while dreaming up the next big thing.</p>
+        
+        <h3>🌐 My Philosophy</h3>
+        <p>I believe great design lives at the intersection of creativity, usability, and authenticity. Every project I take on is built with empathy, intention, and a touch of magic ✨.</p>
+        
+        <h3>📚 Education</h3>
+        <p><strong>• Bachelor’s in Computer Science</strong></p>
+        <p><strong>• Advanced Web Development & Creative Tech</strong> — Self-Taught, Curiosity-Fueled 🚀</p>
+      </div>
+      
+      
+    </div>
+  </div>
 
-    <script src="script.js"></script>
-  </body>
+</body>
 </html>
