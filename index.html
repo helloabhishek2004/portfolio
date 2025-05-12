@@ -1,79 +1,125 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Abhishek's Portfolio</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css" />
-</head>
-<body>
-  <canvas id="bg-animation"></canvas>
-  <header class="nav">
-    <h2>ABHISHEK</h2>
-    <nav>
-      <ul>
-        <li><a href="#about">About</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </nav>
-    <button id="darkToggle" title="Toggle Dark Mode">🌙</button>
-  </header>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Abhishek's Portfolio</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <canvas id="bg-animation"></canvas>
+    <header class="nav">
+      <h2>ABHISHEK</h2>
+      <nav>
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <button id="darkToggle" title="Toggle Dark Mode">
+        <span id="toggleIcon">🌙</span>
+      </button>
+    </header>
 
-  <main class="container">
-    <section class="card hero" id="about">
-      <h1>Hi, I'm <span id="typing"></span></h1>
-      <p>A designer blending technology with creativity to craft immersive experiences.</p>
-    </section>
+    <main class="container">
+      <section class="card hero" id="about">
+        <div class="hero-grid">
+          <div class="hero-intro tile">
+            <h1>
+              Artist Redefining<br />
+              Architecture with<br />
+              <span class="highlight">AI-Driven Design</span>
+            </h1>
+          </div>
+          <div class="hero-image tile">
+            <img src="your-photo.jpg" alt="Abhishek" />
+          </div>
+          <div class="hero-bio tile">
+            <p>
+              Abhishek is an innovative AI artist, renowned for blending
+              cutting-edge technology with creative expression. Based in LA, he
+              crafts unique digital art experiences accessible globally.
+            </p>
+          </div>
 
-    <section class="card project" id="projects">
-      <h2>Projects</h2>
-      <div class="project-grid">
-        <div class="project-item">
-          <img src="project1.jpg" alt="Project 1">
-          <h3>Project One</h3>
-          <p>Brief description of Project One.</p>
+      </section>
+
+      <section class="card project" id="projects">
+        <h2>Projects</h2>
+        <div class="project-grid">
+          <div class="project-item">
+            <img src="project1.jpg" alt="Project 1" />
+            <h3>Project One</h3>
+            <p>Brief description of Project One.</p>
+          </div>
+          <div class="project-item">
+            <img src="project2.jpg" alt="Project 2" />
+            <h3>Project Two</h3>
+            <p>Brief description of Project Two.</p>
+          </div>
         </div>
-        <div class="project-item">
-          <img src="project2.jpg" alt="Project 2">
-          <h3>Project Two</h3>
-          <p>Brief description of Project Two.</p>
-        </div>
-      </div>
-    </section>
+      </section>
 
-    <section class="card skills" id="skills">
-      <h2>Skills</h2>
-      <ul>
-        <li>Web designing</li>
-        <li>Video Production</li>
-        <li>Graphic designing</li>
-        <li>Web development</li>
-        <li>AI tools</li>
-        <li>Creative thinking</li>
-      </ul>
-    </section>
+      <section class="card skills" id="skills">
+        <h2>Skills</h2>
+        <ul>
+          <li>Web designing</li>
+          <li>Video Production</li>
+          <li>Graphic designing</li>
+          <li>Web development</li>
+          <li>AI tools</li>
+          <li>Creative thinking</li>
+        </ul>
+      </section>
 
-    <section class="card contact" id="contact">
-      <h2>Contact</h2>
-      <p>Interested in collaborating? Let's connect!</p>
-      <a href="mailto:abhishek@example.com">abhishek@example.com</a><br>
-      <a href="https://wa.me/919999999999" target="_blank">
-        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/whatsapp.svg" alt="WhatsApp" style="width:20px;height:20px;margin-right:6px;vertical-align:middle;">
-        WhatsApp
-      </a><br>
-      <a href="tel:+919999999999">+91 99999 99999</a>
-    </section>
-  </main>
+      <section class="card contact" id="contact">
+        <h2>Contact</h2>
+        <p>Interested in collaborating? Let's connect!</p>
+        <a href="mailto:abhishek@example.com">abhishek@example.com</a><br />
+        <a href="https://wa.me/919999999999" target="_blank">
+          <img
+            src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/whatsapp.svg"
+            alt="WhatsApp"
+            style="
+              width: 20px;
+              height: 20px;
+              margin-right: 6px;
+              vertical-align: middle;
+            "
+          />
+          WhatsApp </a
+        ><br />
+        <a href="tel:+919999999999">+91 99999 99999</a>
+      </section>
+    </main>
 
-  <footer class="socials">
-    <a href="https://instagram.com/yourprofile" target="_blank" rel="noopener noreferrer">Instagram</a>
-    <a href="https://twitter.com/yourprofile" target="_blank" rel="noopener noreferrer">Twitter</a>
-    <a href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-  </footer>
+    <footer class="socials">
+      <a
+        href="https://instagram.com/yourprofile"
+        target="_blank"
+        rel="noopener noreferrer"
+        >Instagram</a
+      >
+      <a
+        href="https://twitter.com/yourprofile"
+        target="_blank"
+        rel="noopener noreferrer"
+        >Twitter</a
+      >
+      <a
+        href="https://linkedin.com/in/yourprofile"
+        target="_blank"
+        rel="noopener noreferrer"
+        >LinkedIn</a
+      >
+    </footer>
 
-  <script src="script.js"></script>
-</body>
+    <script src="script.js"></script>
+  </body>
 </html>
